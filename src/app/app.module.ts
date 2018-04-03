@@ -1,3 +1,4 @@
+import { AppService } from './services/app.service';
 import { ToolbarComponent } from './components/toolbar.component';
 import { AppFooterComponent } from './app-footer.component';
 import { HomeComponent } from './pages/home/home.component';
@@ -18,6 +19,9 @@ if (environment.production) {
         RouterModule.forRoot(appRoutes, {
             useHash: true
         }),
+    ],
+    providers: [
+        AppService
     ],
     declarations: [
         AppComponent,
