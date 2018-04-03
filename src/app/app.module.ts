@@ -1,3 +1,5 @@
+import { ToolbarComponent } from './components/toolbar.component';
+import { AppFooterComponent } from './app-footer.component';
 import { HomeComponent } from './pages/home/home.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, enableProdMode } from '@angular/core';
@@ -17,8 +19,12 @@ if (environment.production) {
             useHash: true
         }),
     ],
-    declarations: [AppComponent, HomeComponent],
-    providers: [],
+    declarations: [
+        AppComponent,
+        AppFooterComponent,
+        ToolbarComponent,
+        HomeComponent
+    ],
     bootstrap: [AppComponent]
 })
 export class AppModule { }
