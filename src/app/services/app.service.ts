@@ -11,8 +11,8 @@ export class AppService {
         setTimeout(() => this.footerObserver.next(true), 100);
     }
 
-    toggleFooter() {
-        this.showFooter  = !this.showFooter ;
+    public toggleFooter(show?: boolean) {
+        this.showFooter = show !== undefined ? !!show : !this.showFooter;
         this.footerObserver.next(this.showFooter);
     }
 }

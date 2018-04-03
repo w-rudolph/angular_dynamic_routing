@@ -12,5 +12,8 @@ export class AppFooterComponent {
     }, {
         text: '关于',
         path: '/about'
+    }, {
+        text: 'Todo',
+        path: '/todos'
     }]
 }
