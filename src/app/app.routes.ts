@@ -1,7 +1,7 @@
-import { AboutComponent } from './pages/about/about.component';
+import { HomeComponent } from './pages/home/home.component';
 import { Routes } from '@angular/router';
 
 export const appRoutes: Routes = [
-  { path: 'about', component: AboutComponent },
-  { path: 'home', loadChildren: './pages/home/home.module#HomeModule' },
+  { path: 'home', component: HomeComponent },
+  { path: 'about', loadChildren: './pages/about/about.module#AboutModule' },
 ];

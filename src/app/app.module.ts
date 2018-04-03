@@ -1,4 +1,4 @@
-import { AboutComponent } from './pages/about/about.component';
+import { HomeComponent } from './pages/home/home.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, enableProdMode } from '@angular/core';
 import { RouterModule } from '@angular/router';
@@ -13,9 +13,11 @@ if (environment.production) {
 @NgModule({
     imports: [
         BrowserModule,
-        RouterModule.forRoot(appRoutes),
+        RouterModule.forRoot(appRoutes, {
+            useHash: true
+        }),
     ],
-    declarations: [AppComponent, AboutComponent],
+    declarations: [AppComponent, HomeComponent],
     providers: [],
     bootstrap: [AppComponent]
 })
