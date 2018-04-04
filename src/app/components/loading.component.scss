@@ -1,0 +1,13 @@
+.app-loading {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+}
+
+.app-loading-progress {
+    height: 100%;;
+    transition: width 0.2s ease-in-out;
+    background: #2d8cf0;       
+}

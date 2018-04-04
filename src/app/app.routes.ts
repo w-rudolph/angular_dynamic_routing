@@ -3,6 +3,7 @@ import { Routes, CanActivateChild } from '@angular/router';
 import { RouteGuardService } from './services/route-guard.service';
 
 export const appRoutes: Routes = [
+  { path: '', redirectTo: '/home', pathMatch: 'full' },
   {
     path: 'home',
     component: HomeComponent,

@@ -7,6 +7,7 @@ export class AppService {
     public showFooter: boolean = true;
     public footerObserver = new Subject();
     public appTitle: string = '';
+    
     constructor() {
         setTimeout(() => this.footerObserver.next(true), 100);
     }

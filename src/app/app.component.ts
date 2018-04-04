@@ -1,27 +1,40 @@
+import { Router, NavigationStart, NavigationEnd, NavigationCancel, NavigationError } from '@angular/router';
 import { AppService } from './services/app.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+    selector: 'app-root',
+    templateUrl: './app.component.html',
+    styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
 
-  title = 'app';
-  showFooter: boolean = false;
+    showFooter: boolean = false;
+    loadingValue: number = 0;
+    isLoaded: boolean = false;
 
-  constructor(public appService: AppService) {
-    this.appService = appService;
-  }
+    constructor(public appService: AppService, router: Router) {
+        this.appService = appService;
+        router.events.subscribe(res => {
+            if (res instanceof NavigationStart) {
+                this.isLoaded = false;
+                this.loadingValue = 20;
+            }
+            if (res instanceof NavigationEnd) {
+                this.loadingValue = 100;
+                setTimeout(() => {
+                    this.isLoaded = true;
+                }, 400)
+            }
+            if (res instanceof NavigationCancel || res instanceof NavigationError) {
+                this.isLoaded = true;
+            }
+        })
+    }
 
-  ngOnInit() {
-    this.appService.footerObserver.subscribe(isShow => {
-      this.showFooter = <boolean>isShow;
-    })
-  }
-
-  toggleFooter() {
-    this.appService.toggleFooter();
-  }
+    ngOnInit() {
+        this.appService.footerObserver.subscribe(isShow => {
+            this.showFooter = <boolean>isShow;
+        })
+    }
 }

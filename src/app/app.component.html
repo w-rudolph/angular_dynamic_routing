@@ -1,7 +1,7 @@
 <div class="app-root__container" [ngClass]="{'footer-show': showFooter}">
+  <app-loading [value]="loadingValue" [loaded]="isLoaded"></app-loading>
   <div class="app-main">
     <router-outlet></router-outlet>
-    <!-- <button (click)="toggleFooter()">Toggle Footer</button> -->
   </div>
   <app-footer *ngIf="showFooter" class="app-footer"></app-footer>
 </div>
