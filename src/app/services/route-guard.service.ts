@@ -12,6 +12,10 @@ export class RouteGuardService implements CanActivate, CanActivateChild {
     }
 
     canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
+        const { data = {} } = route.routeConfig;
+        const { title = 'App.Angular.Com' } = data;
+        this.appService.setTitle(title);
+
         return true;
     }
 
