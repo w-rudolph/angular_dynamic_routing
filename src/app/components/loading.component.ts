@@ -1,15 +1,11 @@
-import { Component, Input } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
     selector: 'app-loading',
-    template: `
-        <div class="app-loading" *ngIf="!loaded">
-            <div [ngStyle]="{'width': value + '%'}" class="app-loading-progress"></div>
-        </div>
-    `,
-    styleUrls: ['./loading.component.scss']
+    template:  `
+        <div class="app-loading"></div>
+    `
 })
 export class LoadingComponent {
-    @Input('value') value: number = 0;
-    @Input('loaded') loaded: boolean = true;
+
 }

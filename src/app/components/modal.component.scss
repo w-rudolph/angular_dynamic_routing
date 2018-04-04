@@ -1,0 +1,38 @@
+.app-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    z-index: 1000;
+    &__overlay {
+        width: 100%;
+        height: 100%;
+        background: #000;
+        opacity: .5;
+    }
+    &__content-container {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 95%;
+        padding: 10px;
+        min-height: 50px;
+        transform: translate(-50%, -50%);
+        z-index: 1001;
+        padding-bottom: 65px;
+    }
+    &__content {
+        background: #f8f8f8;
+        border-radius: 6px;
+        padding: 20px;
+        overflow: hidden;
+    }
+    &__close {
+        position: absolute;
+        left: 50%;
+        bottom: 0;
+        padding: 10px;
+        transform: translateX(-50%);
+    }
+}

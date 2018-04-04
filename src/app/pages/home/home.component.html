@@ -1,2 +1,11 @@
 <p>Home works</p>
-<div>Home page</div>
+<button (click)="showModal()">Show Modal</button>
+<app-modal [hideOnClickModal]="true" [visible]="visible" (close)="handleModalClose($event)">
+    <div>Hello, this is Modal</div>
+    <div>Hello, this is Modal</div>
+    <div>Hello, this is Modal</div>
+    <div>Hello, this is Modal</div>
+    <div>Hello, this is Modal</div>
+    <div>Hello, this is Modal</div>
+    <div>Hello, this is Modal</div>
+</app-modal>
