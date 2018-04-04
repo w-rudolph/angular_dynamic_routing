@@ -10,6 +10,7 @@ const todosRoutes: Routes = [
     },
     {
         path: 'detail/:id',
+        data: { showFooter: false },
         component: TodosDetailComponent
     }
 ]

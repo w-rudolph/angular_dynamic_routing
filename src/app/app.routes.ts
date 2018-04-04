@@ -1,8 +1,9 @@
 import { HomeComponent } from './pages/home/home.component';
-import { Routes } from '@angular/router';
+import { Routes, CanActivateChild } from '@angular/router';
+import { RouteGuardService } from './services/route-guard.service';
 
 export const appRoutes: Routes = [
-  { path: 'home', component: HomeComponent },
+  { path: 'home', component: HomeComponent, data: { title: '主页' } },
   { path: 'about', loadChildren: './pages/about/about.module#AboutModule' },
-  { path: 'todos', loadChildren: './pages/todos/todos.module#TodosModule'}
+  { path: 'todos', data: { title: 'todos' }, canActivateChild: [RouteGuardService], loadChildren: './pages/todos/todos.module#TodosModule' }
 ];

@@ -1,3 +1,4 @@
+import { RouteGuardService } from './services/route-guard.service';
 import { AppService } from './services/app.service';
 import { ToolbarComponent } from './components/toolbar.component';
 import { AppFooterComponent } from './app-footer.component';
@@ -21,7 +22,8 @@ if (environment.production) {
         }),
     ],
     providers: [
-        AppService
+        AppService,
+        RouteGuardService
     ],
     declarations: [
         AppComponent,

@@ -1,4 +1,3 @@
-import { AppService } from './../../services/app.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -8,15 +7,11 @@ import { Component, OnInit } from '@angular/core';
     `
 })
 export class TodosDetailComponent implements OnInit {
-    constructor(private appService: AppService) {
-        this.appService = appService;
-    }
-
     ngOnInit() {
-        setTimeout(() => this.appService.toggleFooter(false), 100)
+
     }
 
     ngOnDestroy() {
-        this.appService.toggleFooter(true);
+
     }
 }
