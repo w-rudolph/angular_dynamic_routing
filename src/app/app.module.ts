@@ -1,3 +1,4 @@
+import { LoadingComponent } from './components/loading.component';
 import { LoadingBarComponent } from './components/loading-bar.component';
 import { ModalComponent } from './components/modal.component';
 import { RouteGuardService } from './services/route-guard.service';
@@ -33,7 +34,8 @@ if (environment.production) {
         ToolbarComponent,
         ModalComponent,
         HomeComponent,
-        LoadingBarComponent
+        LoadingBarComponent,
+        LoadingComponent
     ],
     bootstrap: [AppComponent]
 })

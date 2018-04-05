@@ -1,5 +1,6 @@
 <div class="app-root__container" [ngClass]="{'footer-show': showFooter}">
   <app-loading-bar [value]="loadingValue" [loaded]="isLoaded"></app-loading-bar>
+  <app-loading [visible]="showLoading"></app-loading>
   <div class="app-main">
     <router-outlet></router-outlet>
   </div>

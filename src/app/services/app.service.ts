@@ -4,10 +4,13 @@ import { Injectable } from '@angular/core';
 @Injectable()
 export class AppService {
 
-    public showFooter: boolean = true;
-    public footerObserver = new Subject();
     public appTitle: string = '';
+    public showFooter: boolean = true;
+    public showLoading: boolean = false;
     
+    public footerObserver = new Subject();
+    public loadingObserver = new Subject();
+
     constructor() {
         setTimeout(() => this.footerObserver.next(true), 100);
     }
@@ -24,5 +27,12 @@ export class AppService {
 
         document.title = title;
         this.appTitle = title;
+    }
+
+    public toggleLoading(show?: boolean) {
+        if (this.showLoading === show) return;
+
+        this.showLoading = show !== undefined ? !!show : !this.showLoading;
+        this.loadingObserver.next(this.showLoading);
     }
 }

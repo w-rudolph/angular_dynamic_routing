@@ -12,9 +12,15 @@ export class AppComponent implements OnInit {
     showFooter: boolean = false;
     loadingValue: number = 0;
     isLoaded: boolean = false;
+    showLoading: boolean = false;
 
     constructor(public appService: AppService, router: Router) {
         this.appService = appService;
+
+        this.appService.loadingObserver.subscribe(showLoading => {
+            this.showLoading = <boolean>showLoading;
+        });
+        
         router.events.subscribe(res => {
             if (res instanceof NavigationStart) {
                 this.isLoaded = false;

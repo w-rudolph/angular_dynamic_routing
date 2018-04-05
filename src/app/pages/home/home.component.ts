@@ -1,3 +1,4 @@
+import { AppService } from './../../services/app.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,8 +8,11 @@ import { Component, OnInit } from '@angular/core';
 export class HomeComponent implements OnInit {
 
     visible: boolean = false;
+    appService: AppService;
 
-    constructor() { }
+    constructor(appService: AppService) {
+        this.appService = appService;
+    }
 
     ngOnInit() { }
 
@@ -18,5 +22,9 @@ export class HomeComponent implements OnInit {
 
     handleModalClose(visible: boolean) {
         this.visible = visible;
+    }
+
+    showLoadingComponent() {
+        this.appService.toggleLoading();
     }
 }
