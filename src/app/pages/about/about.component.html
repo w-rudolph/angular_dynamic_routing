@@ -1,3 +1,24 @@
-<p id="app-about">
+<div id="app-about">
     about works!
-</p>
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    <hr />
+    <div class="form-container">
+        <label for="">Form</label>
+        <br>
+        <br>
+        <form #form="ngForm" (ngSubmit)="handleFormSubmit($event, form)">
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" [(ngModel)]="Name" required #name="ngModel" name="Name" class="form-control" />
+                <i class="error" *ngIf="name.dirty && name.invalid">
+                    <span *ngIf="name.errors.required">name required!</span>
+                </i>
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="text" [(ngModel)]="Email" #email="ngModel" name="Email" class="form-control" />
+            </div>
+            <button type="submit" class="form-control btn btn-primary">submit</button>
+        </form>
+    </div>
+</div>

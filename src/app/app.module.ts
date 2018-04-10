@@ -1,3 +1,4 @@
+import { HttpInterceptorService } from './services/httpInterceptor.service';
 import { LoadingComponent } from './components/loading.component';
 import { LoadingBarComponent } from './components/loading-bar.component';
 import { ModalComponent } from './components/modal.component';
@@ -12,6 +13,7 @@ import { RouterModule } from '@angular/router';
 import { environment } from '../environments/environment';
 import { appRoutes } from './app.routes';
 import { AppComponent } from './app.component';
+import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 
 if (environment.production) {
     enableProdMode();
@@ -20,13 +22,15 @@ if (environment.production) {
 @NgModule({
     imports: [
         BrowserModule,
+        HttpClientModule,
         RouterModule.forRoot(appRoutes, {
             useHash: true
         }),
     ],
     providers: [
         AppService,
-        RouteGuardService
+        RouteGuardService,
+        { provide: HTTP_INTERCEPTORS, useClass: HttpInterceptorService, multi: true  }
     ],
     declarations: [
         AppComponent,
