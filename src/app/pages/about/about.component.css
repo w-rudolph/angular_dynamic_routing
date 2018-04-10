@@ -1,0 +1,9 @@
+@import "https://cdn.bootcss.com/bootstrap/3.3.4/css/bootstrap.min.css";
+
+.form-container {
+    padding: 0 20px;
+}
+
+.error {
+    color: #f00;
+}

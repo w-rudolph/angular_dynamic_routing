@@ -1,24 +1,75 @@
 <div id="app-about">
-    about works!
-    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.4/css/bootstrap.min.css">
     <hr />
     <div class="form-container">
-        <label for="">Form</label>
+        <label for="">模板驱动表单</label>
         <br>
         <br>
         <form #form="ngForm" (ngSubmit)="handleFormSubmit($event, form)">
             <div class="form-group">
                 <label for="name">Name</label>
-                <input type="text" [(ngModel)]="Name" required #name="ngModel" name="Name" class="form-control" />
+                <input type="text" autocomplete="off" [(ngModel)]="Name" required #name="ngModel" name="Name" class="form-control" />
                 <i class="error" *ngIf="name.dirty && name.invalid">
                     <span *ngIf="name.errors.required">name required!</span>
                 </i>
             </div>
             <div class="form-group">
                 <label for="email">Email</label>
-                <input type="text" [(ngModel)]="Email" #email="ngModel" name="Email" class="form-control" />
+                <input type="text" autocomplete="off" [(ngModel)]="Email" #email="ngModel" name="Email" class="form-control" />
             </div>
             <button type="submit" class="form-control btn btn-primary">submit</button>
         </form>
+        {{form.value | json}}
+        <hr>
+        <label for="">响应式表单</label>
+        <p> #1</p>
+        <form>
+            <div class="form-group">
+                <label for="">Name</label>
+                <input type="text" class="form-control" #name1 [formControl]="Name1">
+            </div>
+            <div class="form-group">
+                <label for="">Email</label>
+                <input type="text" class="form-control" #email1 [formControl]="Email1">
+            </div>
+        </form>
+        {{name1.value}} - {{email1.value}}
+        <p>#2</p>
+        <form [formGroup]="formData">
+            <div class="form-group">
+                <label for="">Name</label>
+                <input type="text" class="form-control" #name2 formControlName="Name">
+            </div>
+            <div class="form-group">
+                <label for="">Email</label>
+                <input type="text" class="form-control" #email2 formControlName="Email">
+            </div>
+        </form>
+        {{formData.value | json}}
+        <p>#3</p>
+        <form [formGroup]="fg">
+            <div class="form-group">
+                <label for="">Name</label>
+                <input type="text" class="form-control" #name3 formControlName="Name">
+            </div>
+            <div class="form-group">
+                <label for="">Email</label>
+                <input type="text" class="form-control" #email3 formControlName="Email">
+            </div>
+            <div formGroupName="Address">
+                <div class="form-group">
+                    <label for="">City</label>
+                    <input class="form-control" formControlName="City" />
+                </div>
+                <div class="form-group">
+                    <label for="">Street</label>
+                    <input class="form-control" formControlName="Street" />
+                </div>
+                <div class="form-group">
+                    <label for="">State</label>
+                    <input class="form-control" formControlName="State" />
+                </div>
+            </div>
+        </form>
+        {{fg.value | json}}
     </div>
 </div>

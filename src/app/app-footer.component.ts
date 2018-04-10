@@ -10,7 +10,7 @@ export class AppFooterComponent {
         text: '首页',
         path: '/home'
     }, {
-        text: '关于',
+        text: '关于Form',
         path: '/about'
     }, {
         text: 'Todo',
