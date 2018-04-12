@@ -25,7 +25,7 @@ export class AboutComponent implements OnInit {
 
   constructor(testService: TestService, private fb: FormBuilder) {
     testService.getTest().subscribe(res => {
-      console.log(res);
+      // console.log(res);
     });
 
     this.createForm();
@@ -55,7 +55,6 @@ export class AboutComponent implements OnInit {
 
   customValidator(fctr: AbstractControl) {
     const value = fctr.value;
-    console.log(fctr)
     return !value ? { 'custom': { value, info: '这是一个自定义错误' } } : null
   }
 
