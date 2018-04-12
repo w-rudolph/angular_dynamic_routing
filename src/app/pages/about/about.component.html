@@ -14,11 +14,24 @@
             </div>
             <div class="form-group">
                 <label for="email">Email</label>
-                <input type="text" autocomplete="off" [(ngModel)]="Email" #email="ngModel" name="Email" class="form-control" />
+                <input type="text" required email autocomplete="off" [(ngModel)]="Email" #email="ngModel" name="Email" class="form-control"
+                />
+                <i class="error" *ngIf="email.dirty && email.invalid">
+                    <span *ngIf="email.errors.required">email required!</span>
+                    <span *ngIf="!email.errors.required && email.errors.email">email format!</span>
+                </i>
             </div>
-            <button type="submit" class="form-control btn btn-primary">submit</button>
+            <div class="form-group">
+                    <label for="phone">Phone</label>
+                    <input type="text" phone-validator required autocomplete="off" [(ngModel)]="Phone" #phone="ngModel" name="Phone" class="form-control"
+                    />
+                    <i class="error" *ngIf="phone.dirty && phone.invalid">
+                        <span *ngIf="phone.errors.required">phone required!</span>
+                        <span *ngIf="!phone.errors.required && phone.errors.phone">phone format!</span>
+                    </i>
+                </div>
+            <button type="submit" [disabled]="form.invalid" class="form-control btn btn-primary">submit</button>
         </form>
-        {{form.value | json}}
         <hr>
         <label for="">响应式表单</label>
         <p> #1</p>
@@ -37,39 +50,59 @@
         <form [formGroup]="formData">
             <div class="form-group">
                 <label for="">Name</label>
-                <input type="text" class="form-control" #name2 formControlName="Name">
+                <input type="text" class="form-control" formControlName="Name">
+            </div>
+            <div class="error" [hidden]="formData.get('Name').valid || formData.get('Name').untouched">
+                <span [hidden]="!formData.hasError('required','Name')">请填写用户名</span>
+                <span [hidden]="!formData.hasError('minlength','Name')">用户名长度过短</span>
+                <span [hidden]="!formData.hasError('maxlength','Name')">用户名长度太长</span>
             </div>
             <div class="form-group">
                 <label for="">Email</label>
-                <input type="text" class="form-control" #email2 formControlName="Email">
+                <input type="text" class="form-control" formControlName="Email">
+            </div>
+            <div class="error" [hidden]="formData.get('Email').valid || formData.get('Email').untouched">
+                <span *ngIf="hasError(formData, 'required','Email')">请填写邮箱</span>
+                <span *ngIf="
+                    !hasError(formData, 'required','Email') &&
+                    hasError(formData, 'email','Email')
+                ">邮箱格式不正确</span>
             </div>
         </form>
-        {{formData.value | json}}
         <p>#3</p>
         <form [formGroup]="fg">
             <div class="form-group">
                 <label for="">Name</label>
-                <input type="text" class="form-control" #name3 formControlName="Name">
+                <input type="text" class="form-control" formControlName="Name">
             </div>
             <div class="form-group">
                 <label for="">Email</label>
-                <input type="text" class="form-control" #email3 formControlName="Email">
+                <input type="text" class="form-control" formControlName="Email">
             </div>
             <div formGroupName="Address">
                 <div class="form-group">
                     <label for="">City</label>
                     <input class="form-control" formControlName="City" />
                 </div>
+                <div class="error" [hidden]="fg.get('Address').get('City').untouched || fg.get('Address').get('City').valid">
+                    <span [hidden]="!fg.get('Address').hasError('required','City')">请填写City</span>
+                </div>
                 <div class="form-group">
                     <label for="">Street</label>
                     <input class="form-control" formControlName="Street" />
+                    <span class="error" [hidden]="fg.get('Address').get('Street').untouched || fg.get('Address').get('Street').valid">
+                        <span>{{fg.get('Address').get('Street').errors?.custom?.info}}</span>
+
+                    </span>
                 </div>
                 <div class="form-group">
                     <label for="">State</label>
                     <input class="form-control" formControlName="State" />
+                    <span class="error" [hidden]="fg.get('Address').get('State').untouched || fg.get('Address').get('State').valid">
+                        <span>{{fg.get('Address').get('State').errors?.custom?.msg}}</span>
+                    </span>
                 </div>
             </div>
         </form>
-        {{fg.value | json}}
     </div>
 </div>

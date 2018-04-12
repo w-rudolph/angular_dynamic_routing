@@ -1,6 +1,6 @@
 import { TestService } from './../../services/test.service';
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { FormControl, AbstractControl, FormGroup, FormBuilder, Validators, AsyncValidatorFn } from '@angular/forms';
 
 @Component({
   selector: 'app-about',
@@ -11,13 +11,14 @@ export class AboutComponent implements OnInit {
 
   Name: string;
   Email: string;
+  Phone: String;
 
   Name1 = new FormControl();
   Email1 = new FormControl();
 
   formData: FormGroup = new FormGroup({
-    Name: new FormControl('', Validators.required),
-    Email: new FormControl('', Validators.required)
+    Name: new FormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(10)]),
+    Email: new FormControl('', [Validators.required, Validators.email])
   })
 
   fg: FormGroup;
@@ -35,28 +36,36 @@ export class AboutComponent implements OnInit {
       Name: '',
       Email: '',
       Address: this.fb.group({
-        City: '',
-        Street: '',
-        State: ''
+        City: ['', [Validators.required]],
+        Street: ['', [this.customValidator]],
+        State: ['', [], [this.asyncValidator]],
       })
     })
-    /*
-     等价于：
-     this.fg = new FormGroup({
-      Name: new FormControl(),
-      Email: new FormControl(),
-      Address: new FormGroup({
-        City: new FormControl(),
-        Street: new FormControl(),
-        State: new FormControl()
-      })
-    })
-    */
   }
 
   ngOnInit() { }
 
   handleFormSubmit(evt, form) {
     console.log(form);
+  }
+
+  hasError(fb: FormGroup, type: string, field: string[]): boolean {
+    return fb.hasError(type, field);
+  }
+
+  customValidator(fctr: AbstractControl) {
+    const value = fctr.value;
+    console.log(fctr)
+    return !value ? { 'custom': { value, info: '这是一个自定义错误' } } : null
+  }
+
+
+  asyncValidator(ctr: FormControl) {
+    return new Promise(resolve => {
+      setTimeout(() => {
+        const value = ctr.value;
+        resolve(!value ? { custom: { value, msg: '这是一个异步的自定义错误！' } } : null);
+      }, 1000)
+    })
   }
 }

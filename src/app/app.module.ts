@@ -13,10 +13,14 @@ import { RouterModule } from '@angular/router';
 import { environment } from '../environments/environment';
 import { appRoutes } from './app.routes';
 import { AppComponent } from './app.component';
-import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
+import { HTTP_INTERCEPTORS, HttpClientModule } from "@angular/common/http";
+// declare var require: any;
 
 if (environment.production) {
     enableProdMode();
+} else {
+    // const VConsole = require('vconsole');
+    // new VConsole();
 }
 
 @NgModule({
@@ -30,7 +34,7 @@ if (environment.production) {
     providers: [
         AppService,
         RouteGuardService,
-        { provide: HTTP_INTERCEPTORS, useClass: HttpInterceptorService, multi: true  }
+        { provide: HTTP_INTERCEPTORS, useClass: HttpInterceptorService, multi: true }
     ],
     declarations: [
         AppComponent,

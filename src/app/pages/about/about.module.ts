@@ -1,3 +1,4 @@
+import { PhoneValidatorDirective } from './../../directives/phone.derective';
 import { TestService } from './../../services/test.service';
 import { AboutRoutes } from './about.routes';
 import { RouterModule } from '@angular/router';
@@ -7,7 +8,7 @@ import { AboutComponent } from './about.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
-    declarations: [AboutComponent],
+    declarations: [AboutComponent, PhoneValidatorDirective],
     providers: [TestService],
     imports: [CommonModule, FormsModule, ReactiveFormsModule, RouterModule.forChild(AboutRoutes)],
     exports: [RouterModule]
