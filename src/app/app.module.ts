@@ -14,6 +14,7 @@ import { environment } from '../environments/environment';
 import { appRoutes } from './app.routes';
 import { AppComponent } from './app.component';
 import { HTTP_INTERCEPTORS, HttpClientModule } from "@angular/common/http";
+import { ServiceWorkerModule } from '@angular/service-worker';
 // declare var require: any;
 
 if (environment.production) {
@@ -30,6 +31,7 @@ if (environment.production) {
         RouterModule.forRoot(appRoutes, {
             useHash: true
         }),
+        ServiceWorkerModule.register('/ngsw-worker.js', { enabled: environment.production })
     ],
     providers: [
         AppService,
