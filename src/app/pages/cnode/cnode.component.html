@@ -1,0 +1,17 @@
+<div id="topic-page">
+    <ul class="topics" #tpl>
+        <li *ngFor="let topic of topics; trackBy: itemTrackBy" class="topic-item">
+            <span class="user-avatar">
+                <img class="user-avatar__img" [src]="topic.author?.avatar_url" [title]="topic.author?.loginname">
+            </span>
+            <span class="topic-tab" [class.is-top]="topic.top" [class.is-good]="topic.good">{{getTopicTab(topic)}}</span>
+            <span class="topic-title" routerLink="detail/{{topic.id}}">{{topic.title}}</span>
+            <span class="visit-count">{{topic.reply_count}} / {{topic.visit_count}}</span>
+            <span class="create-time">{{topic.create_at | timeago}}</span>
+        </li>
+    </ul>
+    <div class="pager" [hidden]="topics?.length < 40">
+        <div class="prev-button" [style.visibility]="page === 1 ? 'hidden' : 'visible'" (click)="pagerChange(true)">上一页</div>
+        <div class="next-button" [hidden]="hasMore" (click)="pagerChange(false)">下一页</div>
+    </div>
+</div>

@@ -15,5 +15,8 @@ export class AppFooterComponent {
     }, {
         text: 'Todo',
         path: '/todos'
+    }, {
+        text: 'Cnode',
+        path: '/cnode'
     }]
 }

@@ -1,0 +1,69 @@
+.user-avatar {
+    width: 30px;
+    height: 30px;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.user-avatar__img {
+    width: 100%;
+}
+
+.topic-item {
+    position: relative;
+    padding: 10px;
+    font-size: 14px;
+    border-top: 1px solid #f0f0f0;
+}
+
+.topic-tab {
+    background-color: #e5e5e5;
+    color: #999;
+    padding: 2px 4px;
+    border-radius: 3px;
+    font-size: 12px;
+    width: 34px;
+    height: 20px;
+    display: inline-block;
+    &.is-top,
+    &.is-good {
+        background: #80bd01;
+        color: #fff;
+    }
+}
+
+.topic-title {
+    display: inline-block;
+    width: 75%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.visit-count {
+    position: absolute;
+    bottom: 2px;
+    left: 82px;
+    font-size: 10px;
+}
+
+.create-time {
+    position: absolute;
+    right: 10px;
+    bottom: 2px;
+    font-size: 10px;
+    color: #666;
+}
+
+.pager {
+    text-align: center;
+    padding: 5px;
+}
+
+.prev-button,
+.next-button {
+    display: inline-block;
+    padding: 5px;
+    background: #f5f5f5;
+    font-size: 14px;
+}

@@ -6,7 +6,10 @@
 
 .toolbar-item {
     display: inline-block;
-    padding: 0 20px;
+    // padding: 0 15px;
+    // font-size: 14px;
+    width: 25%;
+    text-align: center;
     &.active {
         color: #f00;
         background: #fff;

@@ -22,5 +22,12 @@ export const appRoutes: Routes = [
     data: { title: 'todos' },
     canActivate: [RouteGuardService],
     canActivateChild: [RouteGuardService]
+  },
+  {
+    path: 'cnode',
+    loadChildren: './pages/cnode/cnode.module#CNodeModule',
+    data: { title: 'cnode' },
+    canActivate: [RouteGuardService],
+    canActivateChild: [RouteGuardService]
   }
 ];
