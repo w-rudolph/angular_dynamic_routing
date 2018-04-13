@@ -53,9 +53,9 @@
                 <input type="text" class="form-control" formControlName="Name">
             </div>
             <div class="error" [hidden]="formData.get('Name').valid || formData.get('Name').untouched">
-                <span [hidden]="!formData.hasError('required','Name')">请填写用户名</span>
-                <span [hidden]="!formData.hasError('minlength','Name')">用户名长度过短</span>
-                <span [hidden]="!formData.hasError('maxlength','Name')">用户名长度太长</span>
+                <span [hidden]="hasError(formData,'required','Name')">请填写用户名</span>
+                <span [hidden]="hasError(formData,'minlength','Name')">用户名长度过短</span>
+                <span [hidden]="hasError(formData,'maxlength','Name')">用户名长度太长</span>
             </div>
             <div class="form-group">
                 <label for="">Email</label>
@@ -85,7 +85,7 @@
                     <input class="form-control" formControlName="City" />
                 </div>
                 <div class="error" [hidden]="fg.get('Address').get('City').untouched || fg.get('Address').get('City').valid">
-                    <span [hidden]="!fg.get('Address').hasError('required','City')">请填写City</span>
+                    <span [hidden]="!hasError(fg.get('Address'),'required','City')">请填写City</span>
                 </div>
                 <div class="form-group">
                     <label for="">Street</label>

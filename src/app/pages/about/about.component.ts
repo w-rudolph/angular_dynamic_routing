@@ -49,8 +49,8 @@ export class AboutComponent implements OnInit {
     console.log(form);
   }
 
-  hasError(fb: FormGroup, type: string, field: string[]): boolean {
-    return fb.hasError(type, field);
+  hasError(fb: AbstractControl, type: string, field: string): boolean {
+    return fb.hasError(type, [field]);
   }
 
   customValidator(fctr: AbstractControl) {
