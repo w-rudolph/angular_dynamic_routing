@@ -49,14 +49,17 @@ export class CNodeComponent implements OnInit {
             else {
                 this.page -= 1;
             }
+            setTimeout(() => this.scrollToTop(), 1000);
             return this.getTopics(this.page);
         }
         this.page += 1;
         this.getTopics(this.page);
-        setTimeout(() => {
-            const el$ = <HTMLUListElement>this.tplRef.nativeElement
-            el$.scrollIntoView({ behavior: 'smooth', block: 'start'});
-        }, 1000);
+        setTimeout(() => this.scrollToTop(), 1000);
+    }
+
+    scrollToTop() {
+        const el$ = <HTMLUListElement>this.tplRef.nativeElement
+        el$.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
 
     itemTrackBy(index: number, item: Topic) {
