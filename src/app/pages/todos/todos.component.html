@@ -3,11 +3,11 @@
 <a routerLink="detail/2">todo detail page test</a>
 <p>自定义表单：</p>
 <form [formGroup]="fd">
-    <custom-input formControlName="test" #ct></custom-input>
+    <app-custom-input formControlName="test" #ct></app-custom-input>
 </form>
 {{ct.value}}
 <div class="error" [hidden]="!fd.get('test').hasError('required')">必填项</div>
 <p></p>
-<custom-input [(ngModel)]="test1" #ts="ngModel" required></custom-input>
+<app-custom-input [(ngModel)]="test1" #ts="ngModel" required></app-custom-input>
 {{test1}}
 <div class="error" [hidden]="!ts.errors?.required">必填项</div>
