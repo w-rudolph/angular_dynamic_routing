@@ -13,7 +13,7 @@ import { RouterModule } from '@angular/router';
 import { environment } from '../environments/environment';
 import { appRoutes } from './app.routes';
 import { AppComponent } from './app.component';
-import { HTTP_INTERCEPTORS, HttpClientModule } from "@angular/common/http";
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { ServiceWorkerModule } from '@angular/service-worker';
 // declare var require: any;
 

@@ -10,8 +10,4 @@ export class TodosDetailComponent implements OnInit {
     ngOnInit() {
 
     }
-
-    ngOnDestroy() {
-
-    }
 }

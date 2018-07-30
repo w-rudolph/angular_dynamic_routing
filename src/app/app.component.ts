@@ -9,10 +9,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AppComponent implements OnInit {
 
-    showFooter: boolean = false;
-    loadingValue: number = 0;
-    isLoaded: boolean = false;
-    showLoading: boolean = false;
+    showFooter = false;
+    loadingValue = 0;
+    isLoaded = false;
+    showLoading = false;
 
     constructor(public appService: AppService, router: Router) {
         this.appService = appService;
@@ -20,7 +20,7 @@ export class AppComponent implements OnInit {
         this.appService.loadingObserver.subscribe(showLoading => {
             this.showLoading = <boolean>showLoading;
         });
-        
+
         router.events.subscribe(res => {
             if (res instanceof NavigationStart) {
                 this.isLoaded = false;
@@ -30,17 +30,17 @@ export class AppComponent implements OnInit {
                 this.loadingValue = 100;
                 setTimeout(() => {
                     this.isLoaded = true;
-                }, 400)
+                }, 400);
             }
             if (res instanceof NavigationCancel || res instanceof NavigationError) {
                 this.isLoaded = true;
             }
-        })
+        });
     }
 
     ngOnInit() {
         this.appService.footerObserver.subscribe(isShow => {
             this.showFooter = <boolean>isShow;
-        })
+        });
     }
 }

@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import {
+    Component
+} from '@angular/core';
 
 @Component({
     selector: 'app-footer',
@@ -6,7 +8,7 @@ import { Component } from '@angular/core';
     styleUrls: ['./app-footer.component.scss']
 })
 export class AppFooterComponent {
-    toolbarItems = [{ 
+    toolbarItems = [{
         text: '首页',
         path: '/home'
     }, {
@@ -18,5 +20,5 @@ export class AppFooterComponent {
     }, {
         text: 'Cnode',
         path: '/cnode'
-    }]
+    }];
 }

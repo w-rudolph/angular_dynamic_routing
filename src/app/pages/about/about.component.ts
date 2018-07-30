@@ -1,4 +1,3 @@
-import { TestService } from './../../services/test.service';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, AbstractControl, FormGroup, FormBuilder, Validators, AsyncValidatorFn } from '@angular/forms';
 
@@ -19,15 +18,11 @@ export class AboutComponent implements OnInit {
   formData: FormGroup = new FormGroup({
     Name: new FormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(10)]),
     Email: new FormControl('', [Validators.required, Validators.email])
-  })
+  });
 
   fg: FormGroup;
 
-  constructor(testService: TestService, private fb: FormBuilder) {
-    testService.getTest().subscribe(res => {
-      // console.log(res);
-    });
-
+  constructor(private fb: FormBuilder) {
     this.createForm();
   }
 
@@ -40,7 +35,7 @@ export class AboutComponent implements OnInit {
         Street: ['', [this.customValidator]],
         State: ['', [], [this.asyncValidator]],
       })
-    })
+    });
   }
 
   ngOnInit() { }
@@ -55,7 +50,7 @@ export class AboutComponent implements OnInit {
 
   customValidator(fctr: AbstractControl) {
     const value = fctr.value;
-    return !value ? { 'custom': { value, info: '这是一个自定义错误' } } : null
+    return !value ? { 'custom': { value, info: '这是一个自定义错误' } } : null;
   }
 
 
@@ -64,7 +59,7 @@ export class AboutComponent implements OnInit {
       setTimeout(() => {
         const value = ctr.value;
         resolve(!value ? { custom: { value, msg: '这是一个异步的自定义错误！' } } : null);
-      }, 1000)
-    })
+      }, 1000);
+    });
   }
 }

@@ -12,7 +12,7 @@ export class HttpInterceptorService implements HttpInterceptor {
             .map(event => {
                 // response success
                 if (event instanceof HttpResponse) {
-                    
+
                 }
                 return event;
             }).catch((err: HttpErrorResponse) => {

@@ -10,6 +10,6 @@ import { Component, Input } from '@angular/core';
     styleUrls: ['./loading-bar.component.scss']
 })
 export class LoadingBarComponent {
-    @Input('value') value: number = 0;
-    @Input('loaded') loaded: boolean = true;
+    @Input('value') value = 0;
+    @Input('loaded') loaded = true;
 }

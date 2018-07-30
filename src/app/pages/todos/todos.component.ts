@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, Validators, FormGroup } from '@angular/forms';
+
 
 @Component({
     selector: 'app-todos',
@@ -7,8 +9,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TodosComponent implements OnInit {
 
+    fd = new FormGroup({
+        test: new FormControl('test', [Validators.required])
+    });
+    test1 = 'test1';
     constructor() { }
-    
     ngOnInit() { }
-
 }

@@ -14,7 +14,12 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
                         <g fill="none" fillRule="evenodd">
                             <ellipse cx="30" cy="30" fill="#000" opacity=".2" rx="30" ry="30"/>
                             <path fill="#FFF"
-                                d="M30 27.584L17.92 15.503a1.709 1.709 0 1 0-2.417 2.416L27.583 30l-12.08 12.08a1.709 1.709 0 1 0 2.416 2.417L30 32.417l12.08 12.08a1.709 1.709 0 1 0 2.417-2.416L32.417 30l12.08-12.08a1.709 1.709 0 1 0-2.416-2.417L30 27.583z"/>
+                                d="M30 27.584L17.92 15.503a1.709 1.709
+                                 0 1 0-2.417 2.416L27.583 30l-12.08
+                                 12.08a1.709 1.709 0 1 0 2.416 2.417L30
+                                 32.417l12.08 12.08a1.709 1.709 0 1 0
+                                 2.417-2.416L32.417 30l12.08-12.08a1.709
+                                 1.709 0 1 0-2.416-2.417L30 27.583z"/>
                         </g>
                     </svg>
                 </div>
@@ -24,8 +29,8 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
     styleUrls: ['./modal.component.scss']
 })
 export class ModalComponent {
-    @Input('visible') visible: boolean = false;
-    @Input('hideOnClickModal') hideOnClickModal: boolean = false;
+    @Input('visible') visible = false;
+    @Input('hideOnClickModal') hideOnClickModal = false;
     @Output('close') close: EventEmitter<any> = new EventEmitter<any>();
 
     closeModal() {

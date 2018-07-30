@@ -10,8 +10,8 @@ import { Topic, Tab_Map } from './../../models/cnode/topic.model';
 export class CNodeComponent implements OnInit {
 
     topics: Topic[];
-    page: number = 1;
-    hasMore: boolean = true;
+    page = 1;
+    hasMore = true;
     @ViewChild('tpl')
     tplRef: ElementRef;
 
@@ -26,10 +26,12 @@ export class CNodeComponent implements OnInit {
             if (res.data.length < 40) {
                 this.hasMore = false;
             }
-            if (res.data.length === 0) return;
+            if (res.data.length === 0) {
+                return;
+            }
             this.hasMore = true;
             this.topics = res.data;
-        })
+        });
     }
 
     getTopicTab(topic: Topic) {
@@ -45,8 +47,9 @@ export class CNodeComponent implements OnInit {
 
     pagerChange(prev = false) {
         if (prev) {
-            if (this.page === 1) return;
-            else {
+            if (this.page === 1) {
+                return;
+            } else {
                 this.page -= 1;
             }
             setTimeout(() => this.scrollToTop(), 1000);
@@ -58,7 +61,7 @@ export class CNodeComponent implements OnInit {
     }
 
     scrollToTop() {
-        const el$ = <HTMLUListElement>this.tplRef.nativeElement
+        const el$ = <HTMLUListElement>this.tplRef.nativeElement;
         el$.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
 

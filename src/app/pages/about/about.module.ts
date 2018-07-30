@@ -2,8 +2,8 @@ import { PhoneValidatorDirective } from './../../directives/phone.derective';
 import { TestService } from './../../services/test.service';
 import { AboutRoutes } from './about.routes';
 import { RouterModule } from '@angular/router';
-import { NgModule } from "@angular/core";
-import { CommonModule } from "@angular/common";
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { AboutComponent } from './about.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
