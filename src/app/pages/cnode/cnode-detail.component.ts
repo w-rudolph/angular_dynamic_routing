@@ -17,12 +17,12 @@ export class CNodeDetailComponent implements OnInit {
     ngOnInit() {
         this.route.params.subscribe(params => {
             this.getTopicDetail(params.id);
-        })
+        });
     }
 
     getTopicDetail(id: String) {
         this.service.getTopic(id).subscribe(res => {
             this.topcicDetail = res.data;
-        })
+        });
     }
 }
